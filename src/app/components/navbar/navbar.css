@@ -1,0 +1,62 @@
+/* Navbar Styles */
+:host {
+    display: block;
+    width: 100%;
+}
+
+nav.navbar {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    padding: 0.75rem 1rem !important;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav.navbar>div {
+    display: flex;
+    align-items: center;
+}
+
+nav.navbar .flex-1 {
+    flex: 1;
+}
+
+nav.navbar .flex-none {
+    flex: none;
+}
+
+/* Menu horizontal styling */
+ul.menu {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.menu li {
+    display: inline-block;
+}
+
+/* Active filter button animation */
+.btn-primary {
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+/* Brand styling */
+a.text-2xl {
+    transition: opacity 0.2s ease;
+}
+
+a.text-2xl:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,57 @@
+@if (product(); as prod) {
+<div class="card bg-base-100 shadow-xl border-2 border-primary hover:shadow-2xl transition-shadow duration-300">
+    <!-- Product Image -->
+    <figure class="relative aspect-square overflow-hidden">
+        @if (prod.image_url) {
+        <img [src]="prod.image_url" [alt]="prod.title || 'Product image'"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+        } @else {
+        <div class="w-full h-full bg-base-200 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-base-content opacity-20" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+        </div>
+        }
+    </figure>
+
+    <!-- Card Body -->
+    <div class="card-body">
+        <!-- Product Title -->
+        <h2 class="card-title font-bold text-lg line-clamp-2">
+            {{ prod.title || 'Untitled Product' }}
+        </h2>
+
+        <!-- Personal Recommendation / Description -->
+        @if (prod.description) {
+        <p class="text-sm italic text-gray-600 line-clamp-2">
+            "{{ prod.description }}"
+        </p>
+        }
+
+        <!-- Product Price -->
+        <div class="flex items-center gap-2 my-2">
+            @if (prod.price) {
+            <span class="badge badge-lg badge-secondary font-bold">
+                ${{ prod.price }}
+            </span>
+            }
+        </div>
+
+        <!-- Buy Button -->
+        <div class="card-actions justify-end mt-auto">
+            <button class="btn btn-primary w-full gap-2" (click)="openAffiliateLink(prod.affiliate_link)"
+                [disabled]="!prod.affiliate_link"
+                style="padding: 0.75rem 1.5rem; background-color: #e879f9; color: white; border-radius: 0.5rem; font-weight: 600; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                <span>Buy Now</span>
+            </button>
+        </div>
+    </div>
+</div>
+}

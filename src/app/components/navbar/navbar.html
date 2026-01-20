@@ -1,0 +1,32 @@
+<nav class="navbar bg-base-100 shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+        <!-- Logo/Brand -->
+        <div class="flex-1">
+            <a class="text-2xl font-bold text-primary cursor-pointer">
+                💜 Enhypen Faves
+            </a>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex-none">
+            <ul class="menu menu-horizontal gap-2">
+                <!-- All Button -->
+                <li>
+                    <button class="btn btn-sm" [class.btn-primary]="activeFilterId() === null"
+                        [class.btn-ghost]="activeFilterId() !== null" (click)="onFilterClick(null)">
+                        All
+                    </button>
+                </li>
+                <!-- Dynamic Category Buttons -->
+                @for (category of categories(); track category.id) {
+                <li>
+                    <button class="btn btn-sm" [class.btn-primary]="activeFilterId() === category.id"
+                        [class.btn-ghost]="activeFilterId() !== category.id" (click)="onFilterClick(category.id)">
+                        {{ category.name }}
+                    </button>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+</nav>
