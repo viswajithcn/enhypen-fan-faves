@@ -17,17 +17,22 @@
                 <div
                     class="flex items-center space-x-6 whitespace-nowrap min-w-max md:min-w-0 justify-center md:justify-end">
                     <!-- All Button -->
-                    <button class="lowercase tracking-wide text-xs hover:opacity-70 transition-opacity"
-                        [class.text-base-content]="activeFilterId() === null"
-                        [class.text-base-content/50]="activeFilterId() !== null" (click)="onFilterClick(null)">
+                    <button class="lowercase tracking-wide text-xs transition-all duration-200 hover:text-black"
+                        [class.text-black]="activeFilterId() === null" [class.font-bold]="activeFilterId() === null"
+                        [class.underline]="activeFilterId() === null" [class.decoration-1]="activeFilterId() === null"
+                        [class.underline-offset-4]="activeFilterId() === null"
+                        [class.text-gray-500]="activeFilterId() !== null" (click)="onFilterClick(null)">
                         all
                     </button>
                     <!-- Dynamic Category Buttons -->
                     @for (category of categories(); track category.id) {
-                    <button class="lowercase tracking-wide text-xs hover:opacity-70 transition-opacity"
-                        [class.text-base-content]="activeFilterId() === category.id"
-                        [class.text-base-content/50]="activeFilterId() !== category.id"
-                        (click)="onFilterClick(category.id)">
+                    <button class="lowercase tracking-wide text-xs transition-all duration-200 hover:text-black"
+                        [class.text-black]="activeFilterId() === category.id"
+                        [class.font-bold]="activeFilterId() === category.id"
+                        [class.underline]="activeFilterId() === category.id"
+                        [class.decoration-1]="activeFilterId() === category.id"
+                        [class.underline-offset-4]="activeFilterId() === category.id"
+                        [class.text-gray-500]="activeFilterId() !== category.id" (click)="onFilterClick(category.id)">
                         {{ category.name | lowercase }}
                     </button>
                     }
