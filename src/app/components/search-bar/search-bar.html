@@ -1,0 +1,12 @@
+<div class="search-container">
+    <div class="relative w-full max-w-md mx-auto">
+        <input type="text" [value]="searchTerm()" (input)="onSearchInput($event)" (keydown)="onSearchKeydown($event)"
+            placeholder="search by item, group, or code..." class="search-input" />
+
+        @if (searchTerm()) {
+        <button class="clear-btn" (click)="clearSearch()">
+            ×
+        </button>
+        }
+    </div>
+</div>

@@ -1,10 +1,17 @@
 <!-- EnFans Product Showcase -->
 <div class="min-h-screen bg-base-200 flex flex-col">
-  <!-- Navbar -->
-  <app-navbar (filterChange)="onFilterChange($event)" />
+  <!-- Navbar (Brand Only) -->
+  <app-navbar (filterChange)="onCategoryChange($event)" />
 
   <!-- Main Content -->
-  <main class="container mx-auto px-4 py-8 flex-grow">
+  <main class="container mx-auto px-4 py-4 flex-grow">
+
+    <!-- Search Bar -->
+    <app-search-bar (searchChange)="onSearchChange($event)" />
+
+    <!-- Artist Selector -->
+    <app-artist-selector (groupChange)="onGroupChange($event)" />
+
     <!-- Loading State -->
     @if (loading()) {
     <div class="flex justify-center items-center min-h-[400px]">
@@ -32,12 +39,9 @@
       }
     </div>
     } @else {
-    <div class="alert alert-info shadow-lg max-w-2xl mx-auto">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-      </svg>
-      <span>No products found in this category.</span>
+    <div class="text-center py-16">
+      <p class="text-sm text-gray-400 uppercase tracking-widest">no products found</p>
+      <p class="text-xs text-gray-500 mt-2">try adjusting your filters</p>
     </div>
     }
     }

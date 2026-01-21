@@ -1,0 +1,25 @@
+<div class="py-6">
+    <div class="flex items-center justify-center gap-8">
+        <!-- All Artists Button -->
+        <button class="artist-card group" [class.active]="isActive(null)" (click)="onGroupClick(null)">
+            <div class="artist-avatar all-avatar">
+                <span class="text-lg">✦</span>
+            </div>
+            <span class="artist-name">all</span>
+        </button>
+
+        <!-- Dynamic Artist Cards -->
+        @for (group of groups(); track group.id) {
+        <button class="artist-card group" [class.active]="isActive(group.id)" (click)="onGroupClick(group.id)">
+            <div class="artist-avatar">
+                @if (group.image_url) {
+                <img [src]="group.image_url" [alt]="group.name" class="w-full h-full object-cover" />
+                } @else {
+                <span class="text-lg uppercase">{{ group.name.charAt(0) }}</span>
+                }
+            </div>
+            <span class="artist-name">{{ group.name | lowercase }}</span>
+        </button>
+        }
+    </div>
+</div>

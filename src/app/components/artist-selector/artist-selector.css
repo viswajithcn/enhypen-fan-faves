@@ -1,0 +1,63 @@
+/* Artist Selector - Acubi Industrial Style */
+
+.artist-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.artist-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+}
+
+.artist-avatar img {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.artist-card:hover .artist-avatar,
+.artist-card.active .artist-avatar {
+    filter: grayscale(0%);
+    border-color: rgba(128, 128, 128, 0.8);
+}
+
+.artist-card:hover .artist-avatar img,
+.artist-card.active .artist-avatar img {
+    filter: grayscale(0%);
+}
+
+.all-avatar {
+    background: transparent;
+    border: 1px dashed rgba(128, 128, 128, 0.5);
+}
+
+.artist-name {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(128, 128, 128, 0.6);
+    transition: color 0.3s ease;
+}
+
+.artist-card:hover .artist-name,
+.artist-card.active .artist-name {
+    color: inherit;
+}
+
+.artist-card.active .artist-avatar {
+    border-color: currentColor;
+    border-width: 2px;
+}

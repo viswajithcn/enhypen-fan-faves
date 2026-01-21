@@ -1,0 +1,47 @@
+/* Search Bar - Acubi Minimal Style */
+
+.search-container {
+    padding: 1.5rem 1rem;
+}
+
+.search-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+    padding: 0.75rem 2rem 0.75rem 0;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    color: inherit;
+    outline: none;
+    transition: border-color 0.3s ease;
+    text-align: center;
+}
+
+.search-input::placeholder {
+    color: rgba(128, 128, 128, 0.5);
+    font-style: italic;
+    text-transform: lowercase;
+}
+
+.search-input:focus {
+    border-color: rgba(128, 128, 128, 0.8);
+}
+
+.clear-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: rgba(128, 128, 128, 0.6);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.clear-btn:hover {
+    color: inherit;
+}
