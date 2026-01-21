@@ -42,6 +42,10 @@
 
         <!-- Buy Button -->
         <div class="card-actions mt-auto pt-4">
+            <!-- Retailer Label -->
+            <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-2 text-center w-full italic">
+                sold via {{ prod.retailer || 'partner' }}
+            </p>
             <button class="acquire-btn w-full uppercase tracking-widest text-xs font-normal rounded-none"
                 (click)="openAffiliateLink(prod.affiliate_link)" [disabled]="!prod.affiliate_link">
                 acquire →

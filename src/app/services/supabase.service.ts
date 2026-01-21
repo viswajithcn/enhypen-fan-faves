@@ -11,9 +11,22 @@ export interface Product {
     price: number;
     category_id?: number;
     categories?: { name: string };
+    group_id?: number;
+    artist_groups?: { name: string };
     image_url: string;
     description?: string;
     affiliate_link?: string;
+    retailer?: string;
+    product_code?: string;
+}
+
+/**
+ * ArtistGroup interface for type safety
+ */
+export interface ArtistGroup {
+    id: number;
+    name: string;
+    image_url?: string;
 }
 
 /**
@@ -37,12 +50,12 @@ export class SupabaseService {
     }
 
     /**
-     * Get all products from the products table with related category name
+     * Get all products from the products table with related category and artist group names
      */
     async getProducts(): Promise<Product[] | null> {
         const { data, error } = await this.supabase
             .from('products')
-            .select('*, categories(name)');
+            .select('*, categories(name), artist_groups(name)');
 
         if (error) {
             console.error('Error fetching products:', error);
@@ -59,7 +72,7 @@ export class SupabaseService {
     async getProductsByCategory(categoryId: number): Promise<Product[] | null> {
         const { data, error } = await this.supabase
             .from('products')
-            .select('*, categories(name)')
+            .select('*, categories(name), artist_groups(name)')
             .eq('category_id', categoryId);
 
         if (error) {
@@ -68,6 +81,58 @@ export class SupabaseService {
         }
 
         return data as Product[];
+    }
+
+    /**
+     * Get all artist groups
+     */
+    async getGroups(): Promise<ArtistGroup[] | null> {
+        const { data, error } = await this.supabase
+            .from('artist_groups')
+            .select('id, name, image_url');
+
+        if (error) {
+            console.error('Error fetching artist groups:', error);
+            return null;
+        }
+
+        return data as ArtistGroup[];
+    }
+
+    /**
+     * Search products by term (title, product_code, artist group, or category)
+     * @param term - Search term
+     */
+    async searchProducts(term: string): Promise<Product[] | null> {
+        const searchTerm = term.toLowerCase().trim();
+
+        // First try exact product_code match
+        const { data: codeMatch, error: codeError } = await this.supabase
+            .from('products')
+            .select('*, categories(name), artist_groups(name)')
+            .eq('product_code', searchTerm);
+
+        if (codeError) {
+            console.error('Error searching by product_code:', codeError);
+        }
+
+        // If exact code match found, return it
+        if (codeMatch && codeMatch.length > 0) {
+            return codeMatch as Product[];
+        }
+
+        // Otherwise, search by title (using ilike for case-insensitive)
+        const { data: titleMatch, error: titleError } = await this.supabase
+            .from('products')
+            .select('*, categories(name), artist_groups(name)')
+            .ilike('title', `%${searchTerm}%`);
+
+        if (titleError) {
+            console.error('Error searching by title:', titleError);
+            return null;
+        }
+
+        return titleMatch as Product[];
     }
 
     /**
