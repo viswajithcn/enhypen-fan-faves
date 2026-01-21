@@ -14,6 +14,7 @@
 .card-body {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     padding: 1rem !important;
     gap: 0.25rem !important;
 }
@@ -42,4 +43,19 @@ figure {
 /* Monospace font for descriptions */
 .font-mono {
     font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+}
+
+/* Acquire button styling */
+.acquire-btn {
+    padding: 0.75rem 1rem !important;
+    border: 1px solid currentColor !important;
+    background: transparent !important;
+    color: inherit !important;
+    transition: all 0.2s ease !important;
+}
+
+.acquire-btn:hover {
+    background: #1a1a1a !important;
+    color: #ffffff !important;
+    border-color: #1a1a1a !important;
 }

@@ -5,7 +5,7 @@
     <figure class="relative aspect-square overflow-hidden">
         @if (prod.image_url) {
         <img [src]="prod.image_url" [alt]="prod.title || 'Product image'"
-            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
         } @else {
         <div class="w-full h-full bg-base-200 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-base-content opacity-20" fill="none"
@@ -41,8 +41,8 @@
         </div>
 
         <!-- Buy Button -->
-        <div class="card-actions mt-4">
-            <button class="btn btn-outline btn-sm rounded-none w-full uppercase tracking-widest text-xs font-normal"
+        <div class="card-actions mt-auto pt-4">
+            <button class="acquire-btn w-full uppercase tracking-widest text-xs font-normal rounded-none"
                 (click)="openAffiliateLink(prod.affiliate_link)" [disabled]="!prod.affiliate_link">
                 acquire →
             </button>

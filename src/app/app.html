@@ -26,7 +26,7 @@
     <!-- Products Grid -->
     @if (!loading() && !error()) {
     @if (filteredProducts().length > 0) {
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-4 items-stretch">
       @for (product of filteredProducts(); track product.id) {
       <app-product-card [product]="product" />
       }
