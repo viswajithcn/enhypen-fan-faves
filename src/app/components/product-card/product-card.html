@@ -20,12 +20,12 @@
     <!-- Card Body -->
     <div class="card-body p-4">
         <!-- Product Title -->
-        <div class="flex items-baseline justify-between gap-2">
+        <div class="flex items-start justify-between gap-2">
             <h2 class="text-sm font-normal uppercase tracking-wider line-clamp-2 text-base-content">
                 {{ prod.title || 'Untitled' }}
             </h2>
             @if (prod.product_code) {
-            <span class="text-[10px] font-mono text-base-content/40 shrink-0">
+            <span class="text-[10px] font-mono text-base-content/60 shrink-0">
                 #{{ prod.product_code }}
             </span>
             }
