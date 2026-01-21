@@ -4,10 +4,23 @@ module.exports = {
         "./src/**/*.{html,ts}",
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+            },
+        },
     },
     plugins: [require("daisyui")],
     daisyui: {
-        themes: ["valentine"],
+        themes: [
+            {
+                luxury: {
+                    ...require("daisyui/src/theming/themes")["luxury"],
+                    "primary": "#5c6b73",
+                    "secondary": "#9ca3af",
+                    "accent": "#6b7280",
+                },
+            },
+        ],
     },
 }
