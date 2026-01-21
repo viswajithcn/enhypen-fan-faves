@@ -1,10 +1,10 @@
 <!-- EnFans Product Showcase -->
-<div class="min-h-screen bg-base-200">
+<div class="min-h-screen bg-base-200 flex flex-col">
   <!-- Navbar -->
   <app-navbar (filterChange)="onFilterChange($event)" />
 
   <!-- Main Content -->
-  <main class="container mx-auto px-4 py-8">
+  <main class="container mx-auto px-4 py-8 flex-grow">
     <!-- Loading State -->
     @if (loading()) {
     <div class="flex justify-center items-center min-h-[400px]">
@@ -42,6 +42,46 @@
     }
     }
   </main>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-8 mt-16">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+
+        <!-- Brand -->
+        <div class="text-center md:text-left">
+          <p class="text-sm uppercase tracking-widest font-light">OnlyIf.Archive</p>
+          <p class="text-xs text-gray-500 mt-1">curated // subversive // basics</p>
+        </div>
+
+        <!-- Social Links -->
+        <div class="flex items-center space-x-6">
+          <a href="https://instagram.com" target="_blank"
+            class="text-gray-400 hover:text-white transition-colors text-xs uppercase tracking-wider">
+            instagram
+          </a>
+          <span class="text-gray-600">·</span>
+          <a href="https://twitter.com" target="_blank"
+            class="text-gray-400 hover:text-white transition-colors text-xs uppercase tracking-wider">
+            twitter
+          </a>
+          <span class="text-gray-600">·</span>
+          <a href="mailto:contact@onlyif.archive"
+            class="text-gray-400 hover:text-white transition-colors text-xs uppercase tracking-wider">
+            contact
+          </a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center md:text-right">
+          <p class="text-xs text-gray-500">© 2026 OnlyIf.Archive</p>
+          <p class="text-xs text-gray-600 mt-1">all rights reserved</p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
 </div>
 
 <router-outlet />

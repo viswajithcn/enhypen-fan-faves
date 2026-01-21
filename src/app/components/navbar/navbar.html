@@ -14,27 +14,23 @@
 
         <!-- Category Filters -->
         <div class="flex-none">
-            <ul class="menu menu-horizontal gap-1">
+            <div class="flex items-center space-x-6">
                 <!-- All Button -->
-                <li>
-                    <button class="btn btn-ghost btn-sm rounded-none lowercase tracking-wide text-xs"
-                        [class.text-base-content]="activeFilterId() === null"
-                        [class.text-base-content/50]="activeFilterId() !== null" (click)="onFilterClick(null)">
-                        all
-                    </button>
-                </li>
+                <button class="lowercase tracking-wide text-xs hover:opacity-70 transition-opacity"
+                    [class.text-base-content]="activeFilterId() === null"
+                    [class.text-base-content/50]="activeFilterId() !== null" (click)="onFilterClick(null)">
+                    all
+                </button>
                 <!-- Dynamic Category Buttons -->
                 @for (category of categories(); track category.id) {
-                <li>
-                    <button class="btn btn-ghost btn-sm rounded-none lowercase tracking-wide text-xs"
-                        [class.text-base-content]="activeFilterId() === category.id"
-                        [class.text-base-content/50]="activeFilterId() !== category.id"
-                        (click)="onFilterClick(category.id)">
-                        {{ category.name | lowercase }}
-                    </button>
-                </li>
+                <button class="lowercase tracking-wide text-xs hover:opacity-70 transition-opacity"
+                    [class.text-base-content]="activeFilterId() === category.id"
+                    [class.text-base-content/50]="activeFilterId() !== category.id"
+                    (click)="onFilterClick(category.id)">
+                    {{ category.name | lowercase }}
+                </button>
                 }
-            </ul>
+            </div>
         </div>
     </div>
 </nav>

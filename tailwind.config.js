@@ -12,15 +12,6 @@ module.exports = {
     },
     plugins: [require("daisyui")],
     daisyui: {
-        themes: [
-            {
-                luxury: {
-                    ...require("daisyui/src/theming/themes")["luxury"],
-                    "primary": "#5c6b73",
-                    "secondary": "#9ca3af",
-                    "accent": "#6b7280",
-                },
-            },
-        ],
+        themes: ["luxury"],
     },
 }
