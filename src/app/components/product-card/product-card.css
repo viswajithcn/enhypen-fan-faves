@@ -31,7 +31,7 @@
 
 /* Ensure consistent aspect ratio for images */
 figure {
-    max-height: 280px;
+    width: 100%;
     margin-bottom: 0 !important;
 }
 
